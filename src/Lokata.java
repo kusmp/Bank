@@ -1,4 +1,20 @@
-package PACKAGE_NAME;
+public class Lokata implements ProduktBankowy {
 
-public class Lokata {
+    private double odsetki;
+    private int czas; //podawane w miesiacach
+    private double procent;
+    private String rachunek;
+    private double srodki;
+
+
+    public Lokata(){
+
+    }
+
+    public String wyswietlNumerRachunku(){
+        return rachunek;
+    }
+
+
+
 }
