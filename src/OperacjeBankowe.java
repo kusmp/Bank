@@ -10,7 +10,5 @@ public interface OperacjeBankowe {
     public Kredyt zaciagniecieKredytu();
     public Kredyt splataRatyKredytu();
     public double stworzenieDebetu(double kwota);
-    public void Raport();
-
-
+    public void wykonanieRaport();
 }
