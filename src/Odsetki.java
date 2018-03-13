@@ -1,8 +1,4 @@
-public class Odsetki {
-    private double saldo;
-    private double odsetki;
+public interface Odsetki {
 
-    public void wyliczanieOdsetek(){
-
-    }
+    public void wyliczanieOdsetek(double saldo, double procent, int okres);
 }
