@@ -31,8 +31,8 @@ public class Bank implements OperacjeBankowe {
         rachunki.add(rachunek);
     }
 
-    public void usuwanieRachunek() {
-
+    public void usuwanieRachunek(UUID id) {
+        getRachunki().remove(znajdzRachunek(id));
     }
 
     public void zarzadzanie() {
@@ -100,10 +100,8 @@ public class Bank implements OperacjeBankowe {
     }
 
     @Override
-    public void zerwanieLokaty() {
-/*        if(lokaty.contains(id)){
-
-        }*/
+    public void zerwanieLokaty(UUID id) {
+        getLokaty().remove(znajdzLokate(id));
     }
 
     @Override
