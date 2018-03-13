@@ -1,10 +1,15 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class Bank implements OperacjeBankowe {
 
     private String nazwa;
+    private static ArrayList<RachunekBankowy> rachunki = new ArrayList<>();
+    private static ArrayList<Lokata> lokaty = new ArrayList<>();
 
-    public Bank(String nazwa){
+    public Bank(String nazwa) {
         this.nazwa = nazwa;
     }
 
@@ -20,71 +25,93 @@ public class Bank implements OperacjeBankowe {
     //    -------------------------------------------
 //    Metody Banku
 
-    public void dodawanieRachunek(){
+    public void dodawanieRachunek() {
+        UUID id = UUID.randomUUID();
+        RachunekBankowy rachunek = new RachunekBankowy(id);
+        rachunki.add(rachunek);
+    }
+
+    public void usuwanieRachunek() {
 
     }
 
-    public void usuwanieRachunek(){
+    public void zarzadzanie() {
 
     }
 
-    public void zarzadzanie(){
-
-    }
-
-    public HashMap<String, String> wyswietlInfo(){
+    public HashMap<String, String> wyswietlInfo() {
 
         HashMap<String, String> informacje = new HashMap<>();
 
         return informacje;
     }
 
+    public static ArrayList<RachunekBankowy> getRachunki() {
+        return rachunki;
+    }
+
+    public static ArrayList<Lokata> getLokaty() {
+        return lokaty;
+    }
+
+    private RachunekBankowy znajdzRachunek(UUID id){
+        for ( RachunekBankowy rachunek : Bank.getRachunki())
+            if(rachunek.getNrRachunku().equals(id))
+                return rachunek;
+        return null;
+    }
+    private Lokata znajdzLokate(UUID id){
+        for ( Lokata lokata : Bank.getLokaty())
+            if(lokata.getNrRachunku().equals(id))
+                return lokata;
+        return null;
+    }
+
 //    -------------------------------------------
 //    Implementacja interface
 
     @Override
-    public void wplata(double kwota) {
-
+    public void wplata(double kwota, UUID id) {
+        znajdzRachunek(id).zwiekszSrodki(kwota);
     }
 
     @Override
-    public void wyplata(double kwota) {
-
+    public void wyplata(double kwota, UUID id) {
+        znajdzRachunek(id).zmniejszSrodki(kwota);
     }
 
     @Override
-    public void przelew(String rachunek, double kwota) {
+    public void przelew(UUID idOdbiorcy, UUID idNadawcy, double kwota) {
+        znajdzRachunek(idNadawcy).zmniejszSrodki(kwota);
+        znajdzRachunek(idOdbiorcy).zwiekszSrodki(kwota);
 
     }
 
-    @Override
-    public void naliczenieOdsetek() {
-
-    }
-
+    // nie wiemy jak zaimplementowac różne opcje zmiany odsetek
     @Override
     public void zmianaMechanizmuOdsetkowego() {
 
     }
 
     @Override
-    public Lokata zalozenieLokaty() {
-        return null;
+    public void zalozenieLokaty(double srodki, int czas, double procent) {
+        Lokata lokata = new Lokata(UUID.randomUUID(), srodki, czas, procent);
+        lokaty.add(lokata);
     }
 
     @Override
-    public Lokata zerwanieLokaty() {
-        return null;
+    public void zerwanieLokaty() {
+/*        if(lokaty.contains(id)){
+
+        }*/
     }
 
     @Override
-    public Kredyt zaciagniecieKredytu() {
-        return null;
+    public void zaciagniecieKredytu() {
     }
 
     @Override
-    public Kredyt splataRatyKredytu() {
-        return null;
+    public void splataRatyKredytu() {
     }
 
     @Override
@@ -95,5 +122,7 @@ public class Bank implements OperacjeBankowe {
     @Override
     public void wykonanieRaport() {
 
-    };
+    }
+
+    ;
 }
