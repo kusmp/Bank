@@ -1,4 +1,4 @@
 public interface Odsetki {
 
-    public void wyliczanieOdsetek(double saldo, double procent, int okres);
+    public void wyliczanieOdsetek(double procent, int okres);
 }
