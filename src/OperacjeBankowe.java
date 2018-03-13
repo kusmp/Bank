@@ -1,7 +1,9 @@
+import java.util.UUID;
+
 public interface OperacjeBankowe {
 
-    public void wplata(double kwota);
-    public void wyplata(double kwota);
+    public void wplata(double kwota, UUID id);
+    public void wyplata(double kwota, UUID id);
     public void przelew(String rachunek, double kwota);
     public void naliczenieOdsetek();
     public void zmianaMechanizmuOdsetkowego();
