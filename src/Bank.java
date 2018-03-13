@@ -1,10 +1,14 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class Bank implements OperacjeBankowe {
 
     private String nazwa;
+    private static ArrayList<RachunekBankowy> rachunki = new ArrayList<>();
 
-    public Bank(String nazwa){
+    public Bank(String nazwa) {
         this.nazwa = nazwa;
     }
 
@@ -20,36 +24,46 @@ public class Bank implements OperacjeBankowe {
     //    -------------------------------------------
 //    Metody Banku
 
-    public void dodawanieRachunek(){
+    public void dodawanieRachunek() {
+        UUID id = UUID.randomUUID();
+        RachunekBankowy rachunek = new RachunekBankowy(id);
+        rachunki.add(rachunek);
+    }
+
+    public void usuwanieRachunek() {
 
     }
 
-    public void usuwanieRachunek(){
+    public void zarzadzanie() {
 
     }
 
-    public void zarzadzanie(){
-
-    }
-
-    public HashMap<String, String> wyswietlInfo(){
+    public HashMap<String, String> wyswietlInfo() {
 
         HashMap<String, String> informacje = new HashMap<>();
 
         return informacje;
     }
 
+    public static ArrayList<RachunekBankowy> getRachunki() {
+        return rachunki;
+    }
+
 //    -------------------------------------------
 //    Implementacja interface
 
     @Override
-    public void wplata(double kwota) {
-
+    public void wplata(double kwota, UUID id) {
+        for ( RachunekBankowy rachunek : rachunki)
+            if(rachunek.getRACHUNEK() == id)
+                rachunek.zwiekszSrodki(kwota);
     }
 
     @Override
-    public void wyplata(double kwota) {
-
+    public void wyplata(double kwota, UUID id) {
+        for ( RachunekBankowy rachunek : rachunki)
+            if(rachunek.getRACHUNEK() == id)
+                rachunek.zmniejszSrodki(kwota);
     }
 
     @Override
@@ -95,5 +109,7 @@ public class Bank implements OperacjeBankowe {
     @Override
     public void wykonanieRaport() {
 
-    };
+    }
+
+    ;
 }
