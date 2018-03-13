@@ -1,6 +1,4 @@
-public class Lokata extends RachunekBankowy implements ProduktBankowy {
-    private String rachunek;
-    private double srodki;
+public class Lokata extends RachunekBankowy implements ProduktBankowy, Odsetki {
     private int czas; //podawane w miesiacach
     private double procent;
 
@@ -24,5 +22,14 @@ public class Lokata extends RachunekBankowy implements ProduktBankowy {
 
     public void setProcent(double procent) {
         this.procent = procent;
+    }
+
+//    -------------------------------------------
+//    Implementacja interface
+
+    public static void wyliczanieOdsetek(double saldo, double procent, int okres){
+        double naliczoneOdsetki = (okres*((saldo*procent)/365));
+        double saldoKocowe = saldo + naliczoneOdsetki;
+        super.setSrodki(saldoKocowe);
     }
 }
