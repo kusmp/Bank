@@ -3,6 +3,6 @@ public class Odsetki {
     private double odsetki;
 
     public void wyliczanieOdsetek(){
-
+//komentarz
     }
 }
