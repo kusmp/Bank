@@ -1,6 +1,6 @@
 public class Kredyt implements ProduktBankowy {
 
-    private double odsetki;
+
     private int czas; //podawane w miesiacach
     private double procent;
     private String rachunek;

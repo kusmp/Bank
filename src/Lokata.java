@@ -1,20 +1,37 @@
-public class Lokata implements ProduktBankowy {
+import java.util.UUID;
 
-    private double odsetki;
+public class Lokata extends RachunekBankowy implements ProduktBankowy {
     private int czas; //podawane w miesiacach
     private double procent;
-    private String rachunek;
-    private double srodki;
 
-
-    public Lokata(){
-
+    public  Lokata (UUID id, double srodki, int czas, double procent) {
+        super(id, srodki);
+        this.czas = czas;
+        this.procent = procent;
     }
 
-    public String wyswietlNumerRachunku(){
-        return rachunek;
+    public int getCzas() {
+        return czas;
     }
 
+    public void setCzas(int czas) {
+        this.czas = czas;
+    }
 
+    public double getProcent() {
+        return procent;
+    }
 
+    public void setProcent(double procent) {
+        this.procent = procent;
+    }
+
+//    -------------------------------------------
+//    Implementacja interface
+
+    public void wyliczanieOdsetek( double procent, int okres){
+        double naliczoneOdsetki = (okres*((super.pokazSrodki()*procent)/365));
+        double saldoKocowe = super.pokazSrodki() + naliczoneOdsetki;
+        super.setSrodki(saldoKocowe);
+    }
 }

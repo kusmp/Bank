@@ -3,20 +3,18 @@ import java.util.UUID;
 public class RachunekBankowy implements ProduktBankowy {
 
     private double srodki;
-    private String nazwa;
     private  UUID RACHUNEK;
 
     public RachunekBankowy(UUID id) {
         UUID RACHUNEK = id;
     }
 
-    public RachunekBankowy(String rachunekOdbiorcy, double srodki){
-        for ( RachunekBankowy rachunek : Bank.getRachunki())
-            if(rachunek.nazwa.equals(rachunekOdbiorcy))
+    public RachunekBankowy(UUID id, double srodki){
+        UUID RACHUNEK = id;
         this.srodki = srodki;
     }
 
-    public UUID getRACHUNEK() {
+    public UUID getNrRachunku() {
         return RACHUNEK;
     }
 
@@ -36,6 +34,7 @@ public class RachunekBankowy implements ProduktBankowy {
     public void zmniejszSrodki (double srodki) {
         this.srodki -= srodki;
     }
+
 
     public final String wyswietlNumerRachunku(){
         return RACHUNEK.toString();
