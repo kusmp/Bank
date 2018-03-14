@@ -65,6 +65,7 @@ public class Bank implements OperacjeBankowe {
                 return rachunek;
         return null;
     }
+
     private Lokata znajdzLokate(UUID id){
         for ( Lokata lokata : Bank.getLokaty())
             if(lokata.getNrRachunku().equals(id))
