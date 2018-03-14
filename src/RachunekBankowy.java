@@ -35,7 +35,6 @@ public class RachunekBankowy implements ProduktBankowy {
         this.srodki -= srodki;
     }
 
-
     public final String wyswietlNumerRachunku(){
         return RACHUNEK.toString();
     }
