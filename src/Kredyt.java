@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Kredyt extends RachunekBankowy implements ProduktBankowy {
+public class Kredyt extends RachunekBankowy {
     private int czas; //podawane w miesiacach
     private double procent; //procent w skali roku
     private int liczbaRat; //podawana w miesiącach
@@ -47,8 +47,4 @@ public class Kredyt extends RachunekBankowy implements ProduktBankowy {
         kwotaRaty = licznik/mianownik;
         super.zmniejszSrodki(kwotaRaty);
     }
-
-//    public String wyswietlNumerRachunku(){
-//        return rachunek;
-//    }
 }
