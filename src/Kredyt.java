@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Kredyt extends RachunekBankowy  {
+public class Kredyt extends RachunekBankowy {
     private int czas; //podawane w miesiacach
     private double procent; //procent w skali roku
     private int liczbaRat; //podawana w miesiącach
@@ -49,8 +49,4 @@ public class Kredyt extends RachunekBankowy  {
         super.zmniejszSrodki(kwotaRaty);
         return kwotaRaty;
     }
-
-//    public String wyswietlNumerRachunku(){
-//        return rachunek;
-//    }
 }
