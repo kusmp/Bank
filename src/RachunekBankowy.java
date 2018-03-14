@@ -22,6 +22,7 @@ public class RachunekBankowy implements ProduktBankowy {
         debet = false;
         wielkoscDebetu = 0;
         this.historia = new Historia("Historia Rachunku bankowego");
+        this.historia.dodaj("Założenie rachunku");
     }
 
     public RachunekBankowy(UUID id, double srodki, boolean debet, double wielkoscDebetu){
@@ -29,6 +30,8 @@ public class RachunekBankowy implements ProduktBankowy {
         this.srodki = srodki;
         this.debet = true;
         this.wielkoscDebetu = wielkoscDebetu;
+        this.historia = new Historia("Historia Rachunku bankowego");
+        this.historia.dodaj("Założenie rachunku z debetem");
     }
 
     public void setDebet(boolean debet){this.debet = debet;}
