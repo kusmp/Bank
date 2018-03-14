@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Lokata extends RachunekBankowy implements ProduktBankowy {
+public class Lokata extends RachunekBankowy implements ProduktBankowy, Odsetki {
     private int czas; //podawane w miesiacach
     private double procent;
 

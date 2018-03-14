@@ -22,7 +22,7 @@ public class Bank implements OperacjeBankowe {
 //        this.nazwa = nazwa;
 //    }
 
-    //    -------------------------------------------
+//    -------------------------------------------
 //    Metody Banku
 
     public void dodawanieRachunek() {
@@ -84,7 +84,6 @@ public class Bank implements OperacjeBankowe {
     public void przelew(UUID idOdbiorcy, UUID idNadawcy, double kwota) {
         znajdzRachunek(idNadawcy).zmniejszSrodki(kwota);
         znajdzRachunek(idOdbiorcy).zwiekszSrodki(kwota);
-
     }
 
     // nie wiemy jak zaimplementowac różne opcje zmiany odsetek
@@ -121,6 +120,4 @@ public class Bank implements OperacjeBankowe {
     public void wykonanieRaport() {
 
     }
-
-    ;
 }
