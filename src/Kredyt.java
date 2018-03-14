@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Kredyt extends RachunekBankowy implements ProduktBankowy {
+public class Kredyt extends RachunekBankowy  {
     private int czas; //podawane w miesiacach
     private double procent; //procent w skali roku
     private int liczbaRat; //podawana w miesiącach
@@ -14,6 +14,7 @@ public class Kredyt extends RachunekBankowy implements ProduktBankowy {
         super(id, srodki);
         this.procent = procent;
         this.liczbaRat = liczbaRat;
+        this.kwotaRaty = naliczanieKredytu(procent, liczbaRat, srodki);
     }
 
     public int getLiczbaRat(){
@@ -39,13 +40,14 @@ public class Kredyt extends RachunekBankowy implements ProduktBankowy {
     super.zwiekszSrodki(kwotaKredtu);
     }
 
-    public void naliczanieKredytu(double procent, int liczbaRat, double kwotaKredytu){
+    public double naliczanieKredytu(double procent, int liczbaRat, double kwotaKredytu){
         //http://matematycznie.blox.pl/2011/04/Kredyty-raty-stale.html
         double wspolczynnikProcentowy = 1+((1/12)*(procent/100));
         double licznik = (kwotaKredytu*Math.pow(wspolczynnikProcentowy, liczbaRat)*(wspolczynnikProcentowy-1));
         double mianownik = Math.pow(wspolczynnikProcentowy, liczbaRat)-1;
         kwotaRaty = licznik/mianownik;
         super.zmniejszSrodki(kwotaRaty);
+        return kwotaRaty;
     }
 
 //    public String wyswietlNumerRachunku(){
