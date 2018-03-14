@@ -122,13 +122,15 @@ public class Bank implements OperacjeBankowe {
     }
 
     @Override
-    public void splataRatyKredytu() {
+    public void splataRatyKredytu(UUID id, double kwotaKredtu) {
+/*        if(znajdzKredyt(id).getRaty == getLiczbaRat){
 
+        }*/
     }
 
     @Override
-    public double stworzenieDebetu(double kwota) {
-        return 0;
+    public void stworzenieDebetu(UUID id, double srodki, boolean debet, double wielkoscDebetu) {
+        RachunekBankowy DEBET = new RachunekBankowy(id, srodki, debet, wielkoscDebetu);
     }
 
     @Override
