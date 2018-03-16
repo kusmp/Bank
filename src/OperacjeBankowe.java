@@ -6,7 +6,7 @@ public interface OperacjeBankowe {
     public void wyplata(double kwota, UUID id);
     public void przelew(UUID idOdbiorcy, UUID idNadawcy, double kwota);
     public void zmianaMechanizmuOdsetkowego();
-    public void zalozenieLokaty(double srodki, int czas, double procent);
+    public Lokata zalozenieLokaty(double srodki, int czas, double procent);
     public void zerwanieLokaty(UUID id);
     public void zaciagniecieKredytu();
     public void splataRatyKredytu();

@@ -31,10 +31,15 @@ class BankTest {
 
     @Test
     void getLokaty() {
+        List<Lokata> testoweLokaty = new ArrayList<Lokata>();
+        testoweLokaty.add(bank.zalozenieLokaty(300, 4, 2));
+        testoweLokaty.add(bank.zalozenieLokaty(500, 5, 6));
+        assertEquals(2,testoweLokaty.size() );
     }
 
     @Test
     void wplata() {
+
     }
 
     @Test
