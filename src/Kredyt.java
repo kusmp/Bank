@@ -6,6 +6,7 @@ public class Kredyt extends RachunekBankowy {
     private double procent; //procent w skali roku
     private int liczbaRat; //podawana w miesiącach
     private double kwotaRaty; //kwota raty do spłacenia w każdym miesiącu
+    private Historia historia;
 
     public Kredyt(UUID id, double srodki){
         super(id, srodki);
@@ -16,6 +17,8 @@ public class Kredyt extends RachunekBankowy {
         this.procent = procent;
         this.liczbaRat = liczbaRat;
         this.kwotaRaty = naliczanieKredytu(procent, liczbaRat, srodki);
+        this.historia = new Historia("Historia kredytu");
+        this.historia.dodaj("Utworzenie kredytu");
     }
 
     public int getLiczbaRat(){
@@ -36,18 +39,23 @@ public class Kredyt extends RachunekBankowy {
 
 
     /////////////////////////////////////////////////////
+    // Przelanie kwoty kredytu na konto bankowe
 
     public void ZasilKontoKredytem(double kwotaKredtu){
-    super.zwiekszSrodki(kwotaKredtu);
+
+        super.zwiekszSrodki(kwotaKredtu);
+        this.historia.dodaj("Zasilanie konta kredytem");
     }
 
     public double naliczanieKredytu(double procent, int liczbaRat, double kwotaKredytu){
         //http://matematycznie.blox.pl/2011/04/Kredyty-raty-stale.html
+
         double wspolczynnikProcentowy = 1+((1/12)*(procent/100));
         double licznik = (kwotaKredytu*Math.pow(wspolczynnikProcentowy, liczbaRat)*(wspolczynnikProcentowy-1));
         double mianownik = Math.pow(wspolczynnikProcentowy, liczbaRat)-1;
         kwotaRaty = licznik/mianownik;
         super.zmniejszSrodki(kwotaRaty);
+        this.historia.dodaj("Wyliczenie raty kredytu");
         return kwotaRaty;
     }
 }
