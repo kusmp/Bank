@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class Bank implements OperacjeBankowe {
@@ -25,19 +24,18 @@ public class Bank implements OperacjeBankowe {
 //    -------------------------------------------
 //    Metody Banku
 
-    public void dodawanieRachunek() {
+    public RachunekBankowy dodawanieRachunek() {
         UUID id = UUID.randomUUID();
         RachunekBankowy rachunek = new RachunekBankowy(id);
         rachunki.add(rachunek);
+        return rachunek;
     }
 
     public void usuwanieRachunek(UUID id) {
         getRachunki().remove(znajdzRachunek(id));
     }
 
-    public void zarzadzanie() {
-
-    }
+    public void zarzadzanie() {}
 
     public HashMap<String, String> wyswietlInfo() {
 
