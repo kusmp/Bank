@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class Kredyt extends RachunekBankowy {
@@ -42,14 +41,12 @@ public class Kredyt extends RachunekBankowy {
     // Przelanie kwoty kredytu na konto bankowe
 
     public void ZasilKontoKredytem(double kwotaKredtu){
-
         super.zwiekszSrodki(kwotaKredtu);
         this.historia.dodaj("Zasilanie konta kredytem");
     }
 
     public double naliczanieKredytu(double procent, int liczbaRat, double kwotaKredytu){
         //http://matematycznie.blox.pl/2011/04/Kredyty-raty-stale.html
-
         double wspolczynnikProcentowy = 1+((1/12)*(procent/100));
         double licznik = (kwotaKredytu*Math.pow(wspolczynnikProcentowy, liczbaRat)*(wspolczynnikProcentowy-1));
         double mianownik = Math.pow(wspolczynnikProcentowy, liczbaRat)-1;
