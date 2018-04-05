@@ -7,6 +7,7 @@ public class Bank implements OperacjeBankowe {
     private String nazwa;
     private static ArrayList<RachunekBankowy> rachunki = new ArrayList<>();
     private static ArrayList<Lokata> lokaty = new ArrayList<>();
+    private static ArrayList<Kredyt> kredyty = new ArrayList<>();
 
     public Bank(String nazwa) {
         this.nazwa = nazwa;
@@ -52,6 +53,10 @@ public class Bank implements OperacjeBankowe {
         return lokaty;
     }
 
+    public static ArrayList<Kredyt> getKredyty() {
+        return kredyty;
+    }
+
     private RachunekBankowy znajdzRachunek(UUID id){
         for ( RachunekBankowy rachunek : Bank.getRachunki())
             if(rachunek.getNrRachunku().equals(id))
@@ -63,6 +68,12 @@ public class Bank implements OperacjeBankowe {
         for ( Lokata lokata : Bank.getLokaty())
             if(lokata.getNrRachunku().equals(id))
                 return lokata;
+        return null;
+    }
+    private Kredyt znajdzKredyt(UUID id){
+        for ( Kredyt kredyt : Bank.getKredyty())
+            if(kredyt.getNrRachunku().equals(id))
+                return kredyt;
         return null;
     }
 
@@ -104,16 +115,21 @@ public class Bank implements OperacjeBankowe {
     }
 
     @Override
-    public void zaciagniecieKredytu() {
+    public void zaciagniecieKredytu(UUID id, double srodki) {
+        Kredyt kredyt = new Kredyt(UUID.randomUUID(), srodki);
+        kredyty.add(kredyt);
     }
 
     @Override
-    public void splataRatyKredytu() {
+    public void splataRatyKredytu(UUID id, double kwotaKredtu) {
+/*        if(znajdzKredyt(id).getRaty == getLiczbaRat){
+
+        }*/
     }
 
     @Override
-    public double stworzenieDebetu(double kwota) {
-        return 0;
+    public void stworzenieDebetu(UUID id, double srodki, boolean debet, double wielkoscDebetu) {
+        RachunekBankowy DEBET = new RachunekBankowy(id, srodki, debet, wielkoscDebetu);
     }
 
     @Override
