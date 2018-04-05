@@ -30,9 +30,10 @@ public class Historia {
 
 //    -------------------------------------------
 //    Metody Historii
-    public void dodaj(String nazwaOperacji) {
+    public Operacja dodaj(String nazwaOperacji) {
         Operacja operacja = new Operacja(nazwaOperacji);
         this.historia.add(operacja);
+        return operacja;
     }
 
 //    public static void main(String[] args) {
