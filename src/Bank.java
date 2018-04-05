@@ -115,9 +115,10 @@ public class Bank implements OperacjeBankowe {
     }
 
     @Override
-    public void zaciagniecieKredytu(UUID id, double srodki) {
+    public Kredyt zaciagniecieKredytu(UUID id, double srodki) {
         Kredyt kredyt = new Kredyt(UUID.randomUUID(), srodki);
         kredyty.add(kredyt);
+        return kredyt;
     }
 
     @Override

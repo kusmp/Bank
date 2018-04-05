@@ -10,6 +10,7 @@ class BankTest {
 
     @Test
     void dodawanieRachunek() {
+        assertEquals(0 , Bank.getRachunki().size());
         bank.dodawanieRachunek();
         assertEquals(1 , Bank.getRachunki().size());
     }
