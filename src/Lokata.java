@@ -31,9 +31,10 @@ public class Lokata extends RachunekBankowy implements Odsetki {
 //    -------------------------------------------
 //    Implementacja interface
 
-    public void wyliczanieOdsetek( double procent, int okres){
+    public double wyliczanieOdsetek( double procent, int okres){
         double naliczoneOdsetki = (okres*((super.pokazSrodki()*procent)/365));
         double saldoKocowe = super.pokazSrodki() + naliczoneOdsetki;
         super.setSrodki(saldoKocowe);
+        return saldoKocowe;
     }
 }

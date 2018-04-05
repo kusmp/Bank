@@ -77,6 +77,8 @@ public class Bank implements OperacjeBankowe {
         return null;
     }
 
+
+
 //    -------------------------------------------
 //    Implementacja interface
 
@@ -117,6 +119,8 @@ public class Bank implements OperacjeBankowe {
     @Override
     public Kredyt zaciagniecieKredytu(UUID id, double srodki) {
         Kredyt kredyt = new Kredyt(UUID.randomUUID(), srodki);
+        System.out.println(kredyt.pokazSrodki());
+      //  kredyt.naliczanieKredytu(6.0, 2, kredyt.pokazSrodki());
         kredyty.add(kredyt);
         return kredyt;
     }
