@@ -103,9 +103,10 @@ public class Bank implements OperacjeBankowe {
     }
 
     @Override
-    public void zalozenieLokaty(double srodki, int czas, double procent) {
+    public Lokata zalozenieLokaty(double srodki, int czas, double procent) {
         Lokata lokata = new Lokata(UUID.randomUUID(), srodki, czas, procent);
         lokaty.add(lokata);
+        return lokata;
     }
 
     @Override
