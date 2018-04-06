@@ -1,4 +1,3 @@
 public interface Odsetki {
-
-    public double wyliczanieOdsetek(double procent, int okres);
+    public double wyliczanieOdsetek(double saldo);
 }

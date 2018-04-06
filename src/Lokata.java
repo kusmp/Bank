@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Lokata extends RachunekBankowy implements Odsetki {
+public class Lokata extends RachunekBankowy  {
     private int czas; //podawane w miesiacach
     private double procent;
     private Historia historia;
@@ -31,10 +31,10 @@ public class Lokata extends RachunekBankowy implements Odsetki {
 //    -------------------------------------------
 //    Implementacja interface
 
-    public double wyliczanieOdsetek( double procent, int okres){
-        double naliczoneOdsetki = (okres*((super.pokazSrodki()*procent)/365));
-        double saldoKocowe = super.pokazSrodki() + naliczoneOdsetki;
-        super.setSrodki(saldoKocowe);
-        return saldoKocowe;
-    }
+//    public double wyliczanieOdsetek( double procent, int okres){
+//        double naliczoneOdsetki = (okres*((super.pokazSrodki()*procent)/365));
+//        double saldoKocowe = super.pokazSrodki() + naliczoneOdsetki;
+//        super.setSrodki(saldoKocowe);
+//        return saldoKocowe;
+//    }
 }
