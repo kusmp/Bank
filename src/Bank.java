@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
-public class Bank implements OperacjeBankowe {
+public class Bank {
 
     private String nazwa;
-    private static ArrayList<RachunekBankowy> rachunki = new ArrayList<>();
-    private static ArrayList<Lokata> lokaty = new ArrayList<>();
-    private static ArrayList<Kredyt> kredyty = new ArrayList<>();
+    private List<RachunekBankowy> rachunki = new ArrayList<>();
+    private List<Lokata> lokaty = new ArrayList<>();
+    private List<Kredyt> kredyty = new ArrayList<>();
 
     public Bank(String nazwa) {
         this.nazwa = nazwa;
@@ -32,57 +30,69 @@ public class Bank implements OperacjeBankowe {
         return rachunek;
     }
 
-    public void usuwanieRachunek(UUID id) {
-        getRachunki().remove(znajdzRachunek(id));
-    }
+//    public void usuwanieRachunek(UUID id) {
+//        getRachunki().remove(znajdzRachunek(id));
+//    }
 
     public void zarzadzanie() {}
 
-    public HashMap<String, String> wyswietlInfo() {
+    public Map<String, String> wyswietlInfo() {
 
-        HashMap<String, String> informacje = new HashMap<>();
+        Map<String, String> informacje = new HashMap<>();
 
         return informacje;
     }
 
-    public static ArrayList<RachunekBankowy> getRachunki() {
+    public List<RachunekBankowy> getRachunki() {
         return rachunki;
     }
 
-    public static ArrayList<Lokata> getLokaty() {
-        return lokaty;
+    public List<Lokata> getLokaty() {
+        return Collections.unmodifiableList(lokaty);
     }
 
-    public static ArrayList<Kredyt> getKredyty() {
+    public List<Kredyt> getKredyty() {
         return kredyty;
     }
 
-    private RachunekBankowy znajdzRachunek(UUID id){
-        for ( RachunekBankowy rachunek : Bank.getRachunki())
+    public RachunekBankowy znajdzRachunek(UUID id, Bank bank){
+        for ( RachunekBankowy rachunek : bank.getRachunki())
             if(rachunek.getNrRachunku().equals(id))
                 return rachunek;
         return null;
     }
 
-    private Lokata znajdzLokate(UUID id){
-        for ( Lokata lokata : Bank.getLokaty())
+    private Lokata znajdzLokate(UUID id, Bank bank){
+        for ( Lokata lokata : bank.getLokaty())
             if(lokata.getNrRachunku().equals(id))
                 return lokata;
         return null;
     }
-    private Kredyt znajdzKredyt(UUID id){
-        for ( Kredyt kredyt : Bank.getKredyty())
-            if(kredyt.getNrRachunku().equals(id))
+
+    private Kredyt znajdzKredyt(UUID id, Bank bank) {
+        for (Kredyt kredyt : bank.getKredyty())
+            if (kredyt.getNrRachunku().equals(id))
                 return kredyt;
         return null;
     }
 
+//    -------------------------------------------
+//    Implementacja operacji bankowych
 
+    public void wykonajOperacje(OperacjaBankowa operacja) {
+        operacja.wykonaj();
+//        historia.add(operacja);
+    }
+
+//    public void wplata() {
+//        Wplata w = new Wplata(, kwota);
+//        wykonajOperacje(w);
+//    }
 
 //    -------------------------------------------
 //    Implementacja interface
 
-    @Override
+/*    @Override
     public void wplata(double kwota, UUID id) {
         znajdzRachunek(id).zwiekszSrodki(kwota);
     }
@@ -127,9 +137,9 @@ public class Bank implements OperacjeBankowe {
 
     @Override
     public void splataRatyKredytu(UUID id, double kwotaKredtu) {
-/*        if(znajdzKredyt(id).getRaty == getLiczbaRat){
+*//*        if(znajdzKredyt(id).getRaty == getLiczbaRat){
 
-        }*/
+        }*//*
     }
 
     @Override
@@ -140,5 +150,5 @@ public class Bank implements OperacjeBankowe {
     @Override
     public void wykonanieRaport() {
 
-    }
+    }*/
 }

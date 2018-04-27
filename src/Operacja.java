@@ -1,6 +1,6 @@
 import java.util.Date;
 
-    public class Operacja {
+public class Operacja {
     private Date data;
     private String nazwaOperacji;
 

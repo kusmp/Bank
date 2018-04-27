@@ -3,13 +3,14 @@ import java.util.UUID;
 public class RachunekBankowy implements ProduktBankowy {
     private Historia historia;
     private double srodki;
-    private  UUID RACHUNEK;
+    private UUID RACHUNEK;
     private boolean debet;
     private double wielkoscDebetu;
+    private Operacja operacja;
 
     public RachunekBankowy() {
         this.RACHUNEK = UUID.randomUUID();
-        this.historia = new Historia("Historia Rachunku bankowego");
+        this.historia = new Historia("Utworzenie Rachunku bankowego");
     }
 
     public RachunekBankowy(UUID id) {
@@ -88,4 +89,10 @@ public class RachunekBankowy implements ProduktBankowy {
 //        rach.historia.dodaj("dasdsadas");
 //        rach.historia.getHistoria();
 //    }
+
+//    -------------------------------------------
+//    Implementacja operacji bankowych
+
+
+
 }
