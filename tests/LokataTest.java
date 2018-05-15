@@ -9,3 +9,4 @@ class LokataTest {
 //        assertEquals(3890, kwota);
 //    }
 }
+
