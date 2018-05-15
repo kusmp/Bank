@@ -25,7 +25,7 @@ public class Bank {
 
     public RachunekBankowy dodawanieRachunek() {
         UUID id = UUID.randomUUID();
-        RachunekBankowy rachunek = new RachunekBankowy(id);
+        RachunekBankowy rachunek = new RachunekBankowy();
         rachunki.add(rachunek);
         return rachunek;
     }
@@ -83,11 +83,6 @@ public class Bank {
         operacja.wykonaj();
 //        historia.add(operacja);
     }
-
-//    public void wplata() {
-//        Wplata w = new Wplata(, kwota);
-//        wykonajOperacje(w);
-//    }
 
 //    -------------------------------------------
 //    Implementacja interface

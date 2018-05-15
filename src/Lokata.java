@@ -1,12 +1,10 @@
-import java.util.UUID;
-
 public class Lokata extends RachunekBankowy  {
     private int czas; //podawane w miesiacach
     private double procent;
     private Historia historia;
 
-    public  Lokata (UUID id, double srodki, int czas, double procent) {
-        super(id, srodki);
+    public  Lokata (double srodki, int czas, double procent) {
+        super(srodki);
         this.czas = czas;
         this.procent = procent;
         this.historia = new Historia("Historia lokaty Damiana");

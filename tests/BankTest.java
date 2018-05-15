@@ -45,11 +45,20 @@ class BankTest {
 
     @Test
     void wyplata() {
-
+        RachunekBankowy rachunek = new RachunekBankowy(400);
+        Wyplata wyplata = new Wyplata(rachunek, 300);
+        bank.wykonajOperacje(wyplata);
+        assertEquals(100, rachunek.pokazSrodki());
     }
 
     @Test
     void przelew() {
+        RachunekBankowy nadawca = new RachunekBankowy(1000);
+        RachunekBankowy odbiorca = new RachunekBankowy(500);
+        Przelew przelew = new Przelew(nadawca, odbiorca, 300);
+        bank.wykonajOperacje(przelew);
+        assertEquals(700, nadawca.pokazSrodki());
+        assertEquals(800, odbiorca.pokazSrodki());
     }
 
     @Test

@@ -1,5 +1,3 @@
-import java.util.UUID;
-
 public class Kredyt extends RachunekBankowy {
     private int czas; //podawane w miesiacach
     private double procent; //procent w skali roku
@@ -7,12 +5,12 @@ public class Kredyt extends RachunekBankowy {
     private double kwotaRaty; //kwota raty do spłacenia w każdym miesiącu
     private Historia historia;
 
-    public Kredyt(UUID id, double srodki){
-        super(id, srodki);
+    public Kredyt(double srodki){
+        super(srodki);
     };
 
-    public Kredyt(UUID id, double srodki, int liczbaRat, double procent){
-        super(id, srodki);
+    public Kredyt(double srodki, int liczbaRat, double procent){
+        super(srodki);
         this.procent = procent;
         this.liczbaRat = liczbaRat;
        // this.kwotaRaty = naliczanieKredytu(procent, liczbaRat, srodki);

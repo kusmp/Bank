@@ -13,12 +13,8 @@ public class RachunekBankowy implements ProduktBankowy {
         this.historia = new Historia("Utworzenie Rachunku bankowego");
     }
 
-    public RachunekBankowy(UUID id) {
-        UUID RACHUNEK = id;
-    }
-
-    public RachunekBankowy(UUID id, double srodki){
-        UUID RACHUNEK = id;
+    public RachunekBankowy(double srodki){
+        UUID RACHUNEK =  UUID.randomUUID();
         this.srodki = srodki;
         debet = false;
         wielkoscDebetu = 0;
