@@ -1,10 +1,9 @@
 import java.util.UUID;
 
-public class RachunekBankowy implements ProduktBankowy {
+public class RachunekBankowy implements RachunekBankowyInterfejs {
     private Historia historia;
     private double srodki;
     private UUID RACHUNEK;
-    private boolean debet;
     private double wielkoscDebetu;
     private Operacja operacja;
 
@@ -16,27 +15,17 @@ public class RachunekBankowy implements ProduktBankowy {
     public RachunekBankowy(double srodki){
         UUID RACHUNEK =  UUID.randomUUID();
         this.srodki = srodki;
-        debet = false;
         wielkoscDebetu = 0;
         this.historia = new Historia("Historia Rachunku bankowego");
         this.historia.dodaj("Założenie rachunku");
     }
 
-    public RachunekBankowy(UUID id, double srodki, boolean debet, double wielkoscDebetu){
-        UUID RACHUNEK = id;
+    public RachunekBankowy(double srodki, boolean debet, double wielkoscDebetu){
+        UUID RACHUNEK = UUID.randomUUID();
         this.srodki = srodki;
-        this.debet = true;
         this.wielkoscDebetu = wielkoscDebetu;
         this.historia = new Historia("Historia Rachunku bankowego");
         this.historia.dodaj("Założenie rachunku z debetem");
-    }
-
-    public void setDebet(boolean debet){this.debet = debet;}
-
-    public boolean getDebet(){return debet;}
-
-    public UUID getNrRachunku() {
-        return RACHUNEK;
     }
 
     public void setSrodki(double srodki) {
@@ -47,48 +36,42 @@ public class RachunekBankowy implements ProduktBankowy {
         this.RACHUNEK = RACHUNEK;
     }
 
+    public UUID getRACHUNEK() {
+        return RACHUNEK;
+    }
+
+    public double getSrodki(){
+        this.historia.dodaj("Wyświetlenie środków na koncie");
+        return srodki;
+    }
+
     //Metody rachunku
+
+    @Override
     public void zwiekszSrodki(double srodki) {
         this.srodki += srodki;
         this.historia.dodaj("Zwiększenie środków");
     }
 
+    @Override
     public void zmniejszSrodki (double srodki) {
-
-        if(this.srodki < srodki){
-            System.out.println("Brak srodkow");
+        if(this.hasEnoughMoney(srodki)){
+            this.srodki-=srodki;
+            this.historia.dodaj("Zmiejszenie środków");
+        }else{
+            Debet debet = new Debet(this);
+            debet.zmniejszSrodki(srodki);
         }
-        else{
-
-        if(debet==false && (this.srodki - srodki)>0) {
-        this.srodki -= srodki;
-        }
-        else if (debet==true && (this.srodki + wielkoscDebetu) - srodki > 0 ){
-            this.srodki -= srodki;
-        }
-        }
-        this.historia.dodaj("Zmiejszenie środków");
     }
 
-    public final String wyswietlNumerRachunku(){
-        this.historia.dodaj("Wyświetlenie numeru rachunku");
-        return RACHUNEK.toString();
+    @Override
+    public boolean hasEnoughMoney(double srodki) {
+        boolean result;
+        if(this.getSrodki()<srodki){
+            result = false;
+        }else{
+            result = true;
+        }
+        return result;
     }
-
-    public double pokazSrodki(){
-        this.historia.dodaj("Wyświetlenie środków na koncie");
-        return srodki;
-    }
-
-//    public static void main(String[] args) {
-//        RachunekBankowy rach = new RachunekBankowy();
-//        rach.historia.dodaj("dasdsadas");
-//        rach.historia.getHistoria();
-//    }
-
-//    -------------------------------------------
-//    Implementacja operacji bankowych
-
-
-
 }
