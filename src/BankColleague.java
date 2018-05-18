@@ -1,5 +1,4 @@
 public abstract class BankColleague {
-
     protected BankMediator mediator;
     protected String nazwa;
 
@@ -7,7 +6,8 @@ public abstract class BankColleague {
         this.mediator = mediator;
         this.nazwa = nazwa;
     }
-    public abstract void wyslane(String msg);
-    public abstract void odebrane(String msg);
 
+    public abstract void wyslane(String msg);
+
+    public abstract void odebrane(String msg);
 }

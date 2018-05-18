@@ -57,21 +57,21 @@ public class Bank {
 
     public RachunekBankowy znajdzRachunek(UUID id, Bank bank){
         for ( RachunekBankowy rachunek : bank.getRachunki())
-            if(rachunek.getNrRachunku().equals(id))
+            if(rachunek.getRACHUNEK().equals(id))
                 return rachunek;
         return null;
     }
 
     private Lokata znajdzLokate(UUID id, Bank bank){
         for ( Lokata lokata : bank.getLokaty())
-            if(lokata.getNrRachunku().equals(id))
+            if(lokata.getRACHUNEK().equals(id))
                 return lokata;
         return null;
     }
 
     private Kredyt znajdzKredyt(UUID id, Bank bank) {
         for (Kredyt kredyt : bank.getKredyty())
-            if (kredyt.getNrRachunku().equals(id))
+            if (kredyt.getRACHUNEK().equals(id))
                 return kredyt;
         return null;
     }
