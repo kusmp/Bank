@@ -23,6 +23,14 @@ public class RachunekBankowyDekorator implements RachunekBankowyInterfejs {
         this.debet = debet;
     }
 
+    public boolean isDebetExist() {
+        return debetExist;
+    }
+
+    public void setDebetExist(boolean debetExist) {
+        this.debetExist = debetExist;
+    }
+
     @Override
     public void zwiekszSrodki(double srodki) {
         if (this.debetExist == true) {
@@ -43,10 +51,17 @@ public class RachunekBankowyDekorator implements RachunekBankowyInterfejs {
     public void zmniejszSrodki(double srodki) {
         if(hasEnoughMoney(srodki)) {
             this.rachunekBankowy.zmniejszSrodki(srodki);
-        } else if (maxDebet > debet  && srodki < maxDebet - debet){
+        } else if (!hasEnoughMoney(srodki) && maxDebet > debet  && srodki < maxDebet - debet + this.rachunekBankowy.getSrodki()){
             this.debetExist = true;
+            Double dostepneSrodki = this.rachunekBankowy.getSrodki();
+            this.rachunekBankowy.zmniejszSrodki(this.rachunekBankowy.getSrodki());
+            srodki = srodki - dostepneSrodki;
+           // this.rachunekBankowy.zmniejszSrodki();
+           // srodki -= this.rachunekBankowy.getSrodki();
             this.debet += srodki;
         }
+
+
     }
 
     @Override

@@ -1,30 +1,23 @@
 import java.util.*;
 
-public class Bank {
-
-    private String nazwa;
+public class Bank implements BankColleague {
+    private UUID id;
+    private String name;
+    private IzbaBankowa mediator;
     private List<RachunekBankowy> rachunki = new ArrayList<>();
     private List<Lokata> lokaty = new ArrayList<>();
     private List<Kredyt> kredyty = new ArrayList<>();
 
-    public Bank(String nazwa) {
-        this.nazwa = nazwa;
+    public Bank(IzbaBankowa mediator, String name) {
+        this.name = name;
+        this.id = UUID.randomUUID();
+        this.mediator = mediator;
     }
-
-    public String getNazwa() {
-        return nazwa;
-    }
-
-//    Bank nie powinien zmieniać nazwy
-//    public void setNazwa(String nazwa) {
-//        this.nazwa = nazwa;
-//    }
 
 //    -------------------------------------------
 //    Metody Banku
 
-    public RachunekBankowy dodawanieRachunek() {
-        UUID id = UUID.randomUUID();
+    public RachunekBankowy newRachunek() {
         RachunekBankowy rachunek = new RachunekBankowy();
         rachunki.add(rachunek);
         return rachunek;
@@ -104,28 +97,12 @@ public class Bank {
 //    -------------------------------------------
 //    Implementacja interface
 
-/*    @Override
-    public void wplata(double kwota, UUID id) {
-        znajdzRachunek(id).zwiekszSrodki(kwota);
-    }
-
     @Override
-    public void wyplata(double kwota, UUID id) {
-        znajdzRachunek(id).zmniejszSrodki(kwota);
+    public void przelewMiedzybankowy(double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
+        mediator.sendMoney(this, srodki, nadawca, odbiorca);
     }
 
-    @Override
-    public void przelew(UUID idOdbiorcy, UUID idNadawcy, double kwota) {
-        znajdzRachunek(idNadawcy).zmniejszSrodki(kwota);
-        znajdzRachunek(idOdbiorcy).zwiekszSrodki(kwota);
-    }
-
-    // nie wiemy jak zaimplementowac różne opcje zmiany odsetek
-    @Override
-    public void zmianaMechanizmuOdsetkowego() {
-
-    }
-
+/*
     @Override
     public Lokata zalozenieLokaty(double srodki, int czas, double procent) {
         Lokata lokata = new Lokata(UUID.randomUUID(), srodki, czas, procent);
@@ -158,9 +135,5 @@ public class Bank {
     public void stworzenieDebetu(UUID id, double srodki, boolean debet, double wielkoscDebetu) {
         RachunekBankowy DEBET = new RachunekBankowy(id, srodki, debet, wielkoscDebetu);
     }
-
-    @Override
-    public void wykonanieRaport() {
-
-    }*/
+*/
 }
