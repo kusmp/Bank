@@ -2,24 +2,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IzbaBankowa implements IzbaBankowaMediator {
-    List<BankColleague> listaBankow;
+    List<Bank> listaBankow;
 
     public IzbaBankowa() {
         this.listaBankow = new ArrayList<>();
     }
 
-    public void addBank(BankColleague bank) {
-        this.listaBankow.add(bank);
+    @Override
+    public void sendMoney(String msg, Bank bank, Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
+        for (Bank b:this.listaBankow) {
+            if (b == bankDocelowy) {
+                Przelew przelew = new Przelew(nadawca, odbiorca, srodki);
+                b.wykonajOperacje(przelew);
+            }
+        }
     }
 
     @Override
-    public void przelewMiedzybankowy(Bank bank, RachunekBankowy rachunek, double kwota) {
-
-        for (BankColleague b: this.listaBankow) {
-            if(b.equals(bank)){
-
-            }
-        }
-
+    public void addBank(Bank bank) {
+        this.listaBankow.add(bank);
     }
+
+//    @Override
+//    public void przelewMiedzybankowy(Bank bank, RachunekBankowy rachunek, double kwota) {
+//
+//        for (BankColleague b: this.listaBankow) {
+//            if(b.equals(bank)){
+//
+//            }
+//        }
+//
+//    }
 }

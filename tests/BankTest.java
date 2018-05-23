@@ -3,7 +3,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BankTest {
-    Bank bank = new Bank("Bank Zachodni WBK");
+    IzbaBankowa izba = new IzbaBankowa();
+    Bank bank = new Bank(izba,"Bank Zachodni WBK");
 
 //    @Test
 //    void dodawanieRachunek() {
