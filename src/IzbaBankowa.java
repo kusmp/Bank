@@ -9,11 +9,14 @@ public class IzbaBankowa implements IzbaBankowaMediator {
     }
 
     @Override
-    public void sendMoney(Bank bank, Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
+    public void sendMoney(Bank bank, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
         for (Bank b:this.listaBankow) {
-            if (b == bankDocelowy) {
-                Przelew przelew = new Przelew(nadawca, odbiorca, srodki);
-                b.wykonajOperacje(przelew);
+            List<RachunekBankowy> rachunki = b.getRachunki();
+            for (RachunekBankowy rach:rachunki) {
+                if(rach.getRACHUNEK().equals(odbiorca.getRACHUNEK())) {
+                    Przelew przelew = new Przelew(nadawca, odbiorca, srodki);
+                    b.wykonajOperacje(przelew);
+                };
             }
         }
     }

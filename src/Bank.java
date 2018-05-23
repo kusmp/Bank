@@ -18,7 +18,6 @@ public class Bank implements BankColleague {
 //    Metody Banku
 
     public RachunekBankowy newRachunek() {
-        UUID id = UUID.randomUUID();
         RachunekBankowy rachunek = new RachunekBankowy();
         rachunki.add(rachunek);
         return rachunek;
@@ -83,8 +82,8 @@ public class Bank implements BankColleague {
 //    Implementacja interface
 
     @Override
-    public void send(Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
-        mediator.sendMoney(this, bankDocelowy, srodki, nadawca, odbiorca);
+    public void przelewMiedzybankowy(double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
+        mediator.sendMoney(this, srodki, nadawca, odbiorca);
     }
 
 /*

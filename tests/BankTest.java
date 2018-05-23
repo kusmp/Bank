@@ -74,8 +74,7 @@ class BankTest {
         nadawca.zwiekszSrodki(1000);
         odbiorca.zwiekszSrodki(500);
 
-        bank.send(bank1, 100, nadawca, odbiorca);
-
+        bank.przelewMiedzybankowy(100, nadawca, odbiorca);
 
         assertEquals(900, nadawca.getSrodki());
         assertEquals(600, odbiorca.getSrodki());
