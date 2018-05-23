@@ -1,3 +1,4 @@
+/*
 public class BankColleagueImplementation extends BankColleague {
 
     public BankColleagueImplementation(BankMediator mediator, String nazwa) {
@@ -16,5 +17,6 @@ public class BankColleagueImplementation extends BankColleague {
 
     }
 }
+*/
 
 

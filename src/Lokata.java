@@ -26,6 +26,12 @@ public class Lokata extends RachunekBankowy  {
         this.procent = procent;
     }
 
+    @Override
+    public void accept(RaportVisitor raport)
+    {
+        raport.visit(this);
+    }
+
 //    -------------------------------------------
 //    Implementacja interface
 

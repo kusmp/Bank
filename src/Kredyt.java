@@ -54,4 +54,9 @@ public class Kredyt extends RachunekBankowy {
         this.kwotaRaty = kwotaRaty2;
         return kwotaRaty2;
     }
+    @Override
+    public void accept(RaportVisitor raport)
+    {
+        raport.visit(this);
+    }
 }

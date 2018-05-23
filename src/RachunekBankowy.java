@@ -74,4 +74,10 @@ public class RachunekBankowy implements RachunekBankowyInterfejs {
         }
         return result;
     }
+
+        @Override
+        public void accept(RaportVisitor raport)
+        {
+            raport.visit(this);
+        }
 }

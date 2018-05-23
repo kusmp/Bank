@@ -84,6 +84,23 @@ public class Bank {
 //        historia.add(operacja);
     }
 
+    public List<RachunekBankowy> getProduktyDoRaportu(double balance){
+        RaportViseable raportViseable = new RaportViseable(balance);
+        for(Kredyt kredyt: kredyty)
+        {
+            kredyt.accept(raportViseable);
+        }
+        for(Lokata lokata: lokaty)
+        {
+            lokata.accept(raportViseable);
+        }
+        for(RachunekBankowy rachunekBankowy: rachunki)
+        {
+            rachunekBankowy.accept(raportViseable);
+        }
+        return raportViseable.getProduktyDoRaportu();
+    }
+
 //    -------------------------------------------
 //    Implementacja interface
 
