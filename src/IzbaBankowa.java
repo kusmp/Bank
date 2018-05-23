@@ -9,7 +9,7 @@ public class IzbaBankowa implements IzbaBankowaMediator {
     }
 
     @Override
-    public void sendMoney(String msg, Bank bank, Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
+    public void sendMoney(Bank bank, Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
         for (Bank b:this.listaBankow) {
             if (b == bankDocelowy) {
                 Przelew przelew = new Przelew(nadawca, odbiorca, srodki);
@@ -22,15 +22,4 @@ public class IzbaBankowa implements IzbaBankowaMediator {
     public void addBank(Bank bank) {
         this.listaBankow.add(bank);
     }
-
-//    @Override
-//    public void przelewMiedzybankowy(Bank bank, RachunekBankowy rachunek, double kwota) {
-//
-//        for (BankColleague b: this.listaBankow) {
-//            if(b.equals(bank)){
-//
-//            }
-//        }
-//
-//    }
 }

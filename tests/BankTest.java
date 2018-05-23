@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class BankTest {
     IzbaBankowa izba = new IzbaBankowa();
     Bank bank = new Bank(izba,"Bank Zachodni WBK");
+    Bank bank1 = new Bank(izba,"Bank Millenium");
 
 //    @Test
 //    void dodawanieRachunek() {
@@ -61,6 +62,25 @@ class BankTest {
         assertEquals(700, nadawca.getSrodki());
         assertEquals(800, odbiorca.getSrodki());
     }
+
+    @Test
+    void przelewMiedzybankowy() {
+        izba.addBank(bank);
+        izba.addBank(bank1);
+
+        RachunekBankowy nadawca =  bank.newRachunek();
+        RachunekBankowy odbiorca =  bank1.newRachunek();
+
+        nadawca.zwiekszSrodki(1000);
+        odbiorca.zwiekszSrodki(500);
+
+        bank.send(bank1, 100, nadawca, odbiorca);
+
+
+        assertEquals(900, nadawca.getSrodki());
+        assertEquals(600, odbiorca.getSrodki());
+    }
+
 
     @Test
     void zalozenieLokaty() {

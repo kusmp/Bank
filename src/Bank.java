@@ -83,13 +83,11 @@ public class Bank implements BankColleague {
 //    Implementacja interface
 
     @Override
-    public void send(String msg, Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
-        mediator.sendMoney(msg, this, bankDocelowy, srodki, nadawca, odbiorca);
+    public void send(Bank bankDocelowy, double srodki, RachunekBankowy nadawca, RachunekBankowy odbiorca) {
+        mediator.sendMoney(this, bankDocelowy, srodki, nadawca, odbiorca);
     }
 
-/*    @Override
-
-
+/*
     @Override
     public Lokata zalozenieLokaty(double srodki, int czas, double procent) {
         Lokata lokata = new Lokata(UUID.randomUUID(), srodki, czas, procent);
