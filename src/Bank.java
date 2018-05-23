@@ -1,24 +1,13 @@
 import java.util.*;
 
-public class Bank {
-
-    private String nazwa;
+public class Bank extends BankColleague {
     private List<RachunekBankowy> rachunki = new ArrayList<>();
     private List<Lokata> lokaty = new ArrayList<>();
     private List<Kredyt> kredyty = new ArrayList<>();
 
-    public Bank(String nazwa) {
-        this.nazwa = nazwa;
+    public Bank(IzbaBankowaMediator mediator, String nazwa) {
+        super(mediator, nazwa);
     }
-
-    public String getNazwa() {
-        return nazwa;
-    }
-
-//    Bank nie powinien zmieniać nazwy
-//    public void setNazwa(String nazwa) {
-//        this.nazwa = nazwa;
-//    }
 
 //    -------------------------------------------
 //    Metody Banku

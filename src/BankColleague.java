@@ -1,13 +1,13 @@
 public abstract class BankColleague {
-    protected BankMediator mediator;
     protected String nazwa;
+    protected IzbaBankowaMediator mediator;
 
-    public BankColleague(BankMediator mediator, String nazwa) {
+    public BankColleague(IzbaBankowaMediator mediator, String nazwa) {
         this.mediator = mediator;
         this.nazwa = nazwa;
     }
 
-    public abstract void wyslane(String msg);
-
-    public abstract void odebrane(String msg);
+    public String getNazwa() {
+        return nazwa;
+    }
 }
