@@ -23,10 +23,6 @@ public class Bank implements BankColleague {
         return rachunek;
     }
 
-//    public void usuwanieRachunek(UUID id) {
-//        getRachunki().remove(znajdzRachunek(id));
-//    }
-
     public void zarzadzanie() {}
 
     public Map<String, String> wyswietlInfo() {
@@ -126,9 +122,9 @@ public class Bank implements BankColleague {
 
     @Override
     public void splataRatyKredytu(UUID id, double kwotaKredtu) {
-*//*        if(znajdzKredyt(id).getRaty == getLiczbaRat){
+        if(znajdzKredyt(id).getRaty == getLiczbaRat){
 
-        }*//*
+        }
     }
 
     @Override
