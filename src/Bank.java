@@ -80,20 +80,20 @@ public class Bank implements BankColleague {
     }
 
     public List<RachunekBankowy> getProduktyDoRaportu(double balance){
-        RaportViseable raportViseable = new RaportViseable(balance);
+        Raport raport = new Raport(balance);
         for(Kredyt kredyt: kredyty)
         {
-            kredyt.accept(raportViseable);
+            kredyt.accept(raport);
         }
         for(Lokata lokata: lokaty)
         {
-            lokata.accept(raportViseable);
+            lokata.accept(raport);
         }
         for(RachunekBankowy rachunekBankowy: rachunki)
         {
-            rachunekBankowy.accept(raportViseable);
+            rachunekBankowy.accept(raport);
         }
-        return raportViseable.getProduktyDoRaportu();
+        return raport.getProduktyDoRaportu();
     }
 
 //    -------------------------------------------
