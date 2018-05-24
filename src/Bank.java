@@ -7,6 +7,8 @@ public class Bank implements BankColleague {
     private List<RachunekBankowy> rachunki = new ArrayList<>();
     private List<Lokata> lokaty = new ArrayList<>();
     private List<Kredyt> kredyty = new ArrayList<>();
+    private Raport raport;
+    public List<RachunekBankowy> listaProduktow = new ArrayList<>();
 
     public Bank(IzbaBankowa mediator, String name) {
         this.name = name;
@@ -50,6 +52,14 @@ public class Bank implements BankColleague {
         return kredyty;
     }
 
+    public Raport getRaport() {
+        return raport;
+    }
+
+    public void setRaport(Raport raport) {
+        this.raport = raport;
+    }
+
     public RachunekBankowy znajdzRachunek(UUID id, Bank bank){
         for ( RachunekBankowy rachunek : bank.getRachunki())
             if(rachunek.getRACHUNEK().equals(id))
@@ -79,7 +89,7 @@ public class Bank implements BankColleague {
 //        historia.add(operacja);
     }
 
-    public List<RachunekBankowy> getProduktyDoRaportu(double balance){
+/*    public List<RachunekBankowy> getProduktyDoRaportu(double balance){
         Raport raport = new Raport(balance);
         for(Kredyt kredyt: kredyty)
         {
@@ -94,7 +104,7 @@ public class Bank implements BankColleague {
             rachunekBankowy.accept(raport);
         }
         return raport.getProduktyDoRaportu();
-    }
+    }*/
 
 //    -------------------------------------------
 //    Implementacja interface

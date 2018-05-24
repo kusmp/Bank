@@ -4,7 +4,6 @@ import java.util.List;
 public class Raport implements RaportVisitor{
 
     private List<RachunekBankowy> produktyDoRaportu;
-    private List<RachunekBankowyDekorator> debetDoRaportu;
     private double criteriaBalance;
 
     public Raport(double balance)
@@ -29,13 +28,6 @@ public class Raport implements RaportVisitor{
     }
 
     @Override
-    public void visit(RachunekBankowyDekorator debet) {
-        if(debet.getDebet() > criteriaBalance){
-            debetDoRaportu.add(debet);
-        }
-
-    }
-    @Override
     public void visit(Lokata lokata) {
         if(lokata.getSrodki()>criteriaBalance){
             produktyDoRaportu.add(lokata);
@@ -45,7 +37,4 @@ public class Raport implements RaportVisitor{
     public List<RachunekBankowy> getProduktyDoRaportu() {
         return produktyDoRaportu; }
 
-    @Override
-    public List<RachunekBankowyDekorator> getDebetDoRaportu() {
-        return debetDoRaportu; }
 }

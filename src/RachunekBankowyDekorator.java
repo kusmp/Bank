@@ -69,9 +69,4 @@ public class RachunekBankowyDekorator implements RachunekBankowyInterfejs {
        return this.rachunekBankowy.hasEnoughMoney(srodki);
     }
 
-    @Override
-    public void accept(RaportVisitor raport)
-    {
-        raport.visit(this);
-    }
 }

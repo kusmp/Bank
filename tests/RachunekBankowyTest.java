@@ -31,17 +31,6 @@ class RachunekBankowyTest {
     }
 
     @Test
-    void testDebetZaDuzo(){
-        RachunekBankowy rachunek = new RachunekBankowy();
-        rachunek.setSrodki(1000);
-        RachunekBankowyDekorator dekorator = new RachunekBankowyDekorator(rachunek, 500);
-        dekorator.zmniejszSrodki(2000);
-        assertEquals(0, dekorator.getDebet());
-        assertEquals(false, dekorator.isDebetExist());
-
-    }
-
-    @Test
     void testDebetDobrze(){
         RachunekBankowy rachunek = new RachunekBankowy();
         rachunek.setSrodki(1000);
