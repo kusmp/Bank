@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 
 public class Bank implements BankColleague {
     private UUID id;
@@ -29,14 +32,14 @@ public class Bank implements BankColleague {
         return kredyt;
     }
 
-    public void zarzadzanie() {}
+//    public void zarzadzanie() {}
 
-    public Map<String, String> wyswietlInfo() {
-
-        Map<String, String> informacje = new HashMap<>();
-
-        return informacje;
-    }
+//    public Map<String, String> wyswietlInfo() {
+//
+//        Map<String, String> informacje = new HashMap<>();
+//
+//        return informacje;
+//    }
 
     public List<RachunekBankowy> getRachunki() {
         return rachunki;
@@ -50,26 +53,26 @@ public class Bank implements BankColleague {
         return kredyty;
     }
 
-    public RachunekBankowy znajdzRachunek(UUID id, Bank bank){
-        for ( RachunekBankowy rachunek : bank.getRachunki())
-            if(rachunek.getRACHUNEK().equals(id))
-                return rachunek;
-        return null;
-    }
-
-    private Lokata znajdzLokate(UUID id, Bank bank){
-        for ( Lokata lokata : bank.getLokaty())
-            if(lokata.getRACHUNEK().equals(id))
-                return lokata;
-        return null;
-    }
-
-    private Kredyt znajdzKredyt(UUID id, Bank bank) {
-        for (Kredyt kredyt : bank.getKredyty())
-            if (kredyt.getRACHUNEK().equals(id))
-                return kredyt;
-        return null;
-    }
+//    public RachunekBankowy znajdzRachunek(UUID id, Bank bank){
+//        for ( RachunekBankowy rachunek : bank.getRachunki())
+//            if(rachunek.getRACHUNEK().equals(id))
+//                return rachunek;
+//        return null;
+//    }
+//
+//    private Lokata znajdzLokate(UUID id, Bank bank){
+//        for ( Lokata lokata : bank.getLokaty())
+//            if(lokata.getRACHUNEK().equals(id))
+//                return lokata;
+//        return null;
+//    }
+//
+//    private Kredyt znajdzKredyt(UUID id, Bank bank) {
+//        for (Kredyt kredyt : bank.getKredyty())
+//            if (kredyt.getRACHUNEK().equals(id))
+//                return kredyt;
+//        return null;
+//    }
 
 //    -------------------------------------------
 //    Implementacja operacji bankowych
@@ -116,7 +119,6 @@ public class Bank implements BankColleague {
     public void zerwanieLokaty(UUID id) {
         getLokaty().remove(znajdzLokate(id));
     }
-
 
     @Override
     public void splataRatyKredytu(UUID id, double kwotaKredtu) {

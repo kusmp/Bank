@@ -1,9 +1,8 @@
 public class Debet extends RachunekBankowyDekorator {
-
     private Historia historia;
 
-    public Debet(RachunekBankowy rachunekBankowy) {
-        super(rachunekBankowy);
+    public Debet(RachunekBankowy rachunekBankowy, double maxDebet) {
+        super(rachunekBankowy, maxDebet);
         this.historia = new Historia("Historia debetu");
     }
 

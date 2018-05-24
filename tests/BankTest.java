@@ -101,5 +101,12 @@ class BankTest {
 
     @Test
     void stworzenieDebetu() {
+        izba.addBank(bank);
+        RachunekBankowy rachunek = bank.newRachunek();
+
+        ZalozenieDebetu zalozenieDebetu = new ZalozenieDebetu(rachunek, 300);
+        bank.wykonajOperacje(zalozenieDebetu);
+
+        assertEquals(300, zalozenieDebetu.getDebet().getMaxDebet());
     }
 }

@@ -1,12 +1,8 @@
 public class RachunekBankowyDekorator implements RachunekBankowyInterfejs {
-    private double debet;
-    private double maxDebet;
-    private boolean debetExist;
+    protected double debet;
+    protected double maxDebet;
+    protected boolean debetExist;
     protected RachunekBankowy rachunekBankowy;
-
-    public RachunekBankowyDekorator(RachunekBankowy rachunekBankowy) {
-        this.rachunekBankowy = rachunekBankowy;
-    }
 
     public RachunekBankowyDekorator(RachunekBankowy rachunekBankowy, double maxDebet) {
         this.rachunekBankowy = rachunekBankowy;
@@ -21,6 +17,14 @@ public class RachunekBankowyDekorator implements RachunekBankowyInterfejs {
 
     public void setDebet(double debet) {
         this.debet = debet;
+    }
+
+    public double getMaxDebet() {
+        return maxDebet;
+    }
+
+    public void setMaxDebet(double maxDebet) {
+        this.maxDebet = maxDebet;
     }
 
     public boolean isDebetExist() {
@@ -60,8 +64,6 @@ public class RachunekBankowyDekorator implements RachunekBankowyInterfejs {
            // srodki -= this.rachunekBankowy.getSrodki();
             this.debet += srodki;
         }
-
-
     }
 
     @Override

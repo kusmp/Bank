@@ -44,9 +44,9 @@ public class RachunekBankowy implements RachunekBankowyInterfejs {
             this.srodki -= srodki;
             this.historia.dodaj("Zmiejszenie środków");
         } else {
-            this.historia.dodaj("Brak wystarczających środków na koncie");
-            Debet debet = new Debet(this);
-            debet.zmniejszSrodki(srodki);
+            this.historia.dodaj("Brak wystarczających środków na koncie. Załóż debet.");
+//            Debet debet = new Debet(this, 1000);
+//            debet.zmniejszSrodki(srodki);
         }
     }
 

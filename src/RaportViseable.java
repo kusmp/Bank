@@ -7,8 +7,6 @@ public class RaportViseable implements RaportVisitor{
     private List<RachunekBankowyDekorator> debetDoRaportu;
     private double criteriaBalance;
 
-    RachunekBankowyInterfejs ri = new RachunekBankowy();
-    RachunekBankowyInterfejs ri2 = new RachunekBankowyDekorator((RachunekBankowy)ri);
     public RaportViseable(double balance)
     {
         produktyDoRaportu = new ArrayList<>();
