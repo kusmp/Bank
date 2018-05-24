@@ -1,6 +1,7 @@
 public class Wyplata implements OperacjaBankowa {
     private long kwota;
     private RachunekBankowy rachunekBankowy;
+    private Historia historia;
 
     public Wyplata(RachunekBankowy rachunekBankowy, long kwota) {
         this.kwota = kwota;
@@ -9,6 +10,7 @@ public class Wyplata implements OperacjaBankowa {
 
     @Override
     public void wykonaj() {
+        this.historia.dodaj("Wypłata z rachunku");
         rachunekBankowy.zmniejszSrodki(kwota);
     }
 }
