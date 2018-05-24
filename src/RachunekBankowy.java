@@ -62,8 +62,7 @@ public class RachunekBankowy implements RachunekBankowyInterfejs {
         }
         return result;
     }
-
-    @Override
+    
     public void accept(RaportVisitor raport) {
         this.historia.dodaj("Wygenerowanie raportu");
         raport.visit(this);

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Bank implements BankColleague {
     private UUID id;
@@ -10,6 +7,8 @@ public class Bank implements BankColleague {
     private List<RachunekBankowy> rachunki = new ArrayList<>();
     private List<Lokata> lokaty = new ArrayList<>();
     private List<Kredyt> kredyty = new ArrayList<>();
+    private Raport raport;
+    public List<RachunekBankowy> listaProduktow = new ArrayList<>();
 
     public Bank(IzbaBankowa mediator, String name) {
         this.name = name;
@@ -44,6 +43,35 @@ public class Bank implements BankColleague {
         return kredyty;
     }
 
+    public Raport getRaport() {
+        return raport;
+    }
+
+    public void setRaport(Raport raport) {
+        this.raport = raport;
+    }
+
+    public RachunekBankowy znajdzRachunek(UUID id, Bank bank){
+        for ( RachunekBankowy rachunek : bank.getRachunki())
+            if(rachunek.getRACHUNEK().equals(id))
+                return rachunek;
+        return null;
+    }
+
+    private Lokata znajdzLokate(UUID id, Bank bank){
+        for ( Lokata lokata : bank.getLokaty())
+            if(lokata.getRACHUNEK().equals(id))
+                return lokata;
+        return null;
+    }
+
+    private Kredyt znajdzKredyt(UUID id, Bank bank) {
+        for (Kredyt kredyt : bank.getKredyty())
+            if (kredyt.getRACHUNEK().equals(id))
+                return kredyt;
+        return null;
+    }
+
 //    -------------------------------------------
 //    Implementacja operacji bankowych
 
@@ -52,22 +80,22 @@ public class Bank implements BankColleague {
 //        historia.add(operacja);
     }
 
-    public List<RachunekBankowy> getProduktyDoRaportu(double balance){
-        RaportViseable raportViseable = new RaportViseable(balance);
+/*    public List<RachunekBankowy> getProduktyDoRaportu(double balance){
+        Raport raport = new Raport(balance);
         for(Kredyt kredyt: kredyty)
         {
-            kredyt.accept(raportViseable);
+            kredyt.accept(raport);
         }
         for(Lokata lokata: lokaty)
         {
-            lokata.accept(raportViseable);
+            lokata.accept(raport);
         }
         for(RachunekBankowy rachunekBankowy: rachunki)
         {
-            rachunekBankowy.accept(raportViseable);
+            rachunekBankowy.accept(raport);
         }
-        return raportViseable.getProduktyDoRaportu();
-    }
+        return raport.getProduktyDoRaportu();
+    }*/
 
 //    -------------------------------------------
 //    Implementacja interface

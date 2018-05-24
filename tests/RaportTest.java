@@ -14,7 +14,17 @@ public class RaportTest {
         RachunekBankowy rachunek2 = bank.newRachunek();
         rachunek.setSrodki(1000);
         rachunek2.setSrodki(400);
-        List<RachunekBankowy> liczba = bank.getProduktyDoRaportu(500);
-        assertEquals(2, liczba.size());
+        StworzenieRaportu stworzenieRaportu = new StworzenieRaportu(bank, 500);
+        bank.wykonajOperacje(stworzenieRaportu);
+        assertEquals(1, stworzenieRaportu.produktyDoRaportu.size() );
+    }
+    @Test
+    void newRaportwithCredit() {
+        RachunekBankowy rachunek = bank.newRachunek();
+        Kredyt kredyt = bank.newKredyt(600);
+        rachunek.setSrodki(1000);
+        StworzenieRaportu stworzenieRaportu = new StworzenieRaportu(bank, 500);
+        bank.wykonajOperacje(stworzenieRaportu);
+        assertEquals(2, stworzenieRaportu.produktyDoRaportu.size() );
     }
 }
