@@ -5,14 +5,12 @@ public class SplataRatyKredytu implements OperacjaBankowa {
 
     public SplataRatyKredytu(Kredyt kredyt, double kwota) {
         this.kredyt = kredyt;
+        this.kwota = kwota;
     }
 
 
     @Override
     public void wykonaj() {
-        if(this.kredyt.getLiczbaRat()>0){
-            this.kredyt.zmniejszSrodki(kwota);
-            this.kredyt.setLiczbaRat(this.kredyt.getLiczbaRat()-1);
-        }
+        this.kredyt.zmniejszSrodki(kwota);
     }
 }
