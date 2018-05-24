@@ -4,48 +4,33 @@ public class RachunekBankowy implements RachunekBankowyInterfejs {
     private Historia historia;
     private double srodki;
     private UUID RACHUNEK;
-    private double wielkoscDebetu;
-    private Operacja operacja;
 
     public RachunekBankowy() {
         this.RACHUNEK = UUID.randomUUID();
         this.historia = new Historia("Utworzenie Rachunku bankowego");
     }
 
-    public RachunekBankowy(double srodki){
-        UUID RACHUNEK =  UUID.randomUUID();
+    public RachunekBankowy(double srodki) {
+        this.RACHUNEK = UUID.randomUUID();
         this.srodki = srodki;
-        wielkoscDebetu = 0;
         this.historia = new Historia("Historia Rachunku bankowego");
         this.historia.dodaj("Założenie rachunku");
     }
 
-    public RachunekBankowy(double srodki, boolean debet, double wielkoscDebetu){
-        UUID RACHUNEK = UUID.randomUUID();
-        this.srodki = srodki;
-        this.wielkoscDebetu = wielkoscDebetu;
-        this.historia = new Historia("Historia Rachunku bankowego");
-        this.historia.dodaj("Założenie rachunku z debetem");
-    }
-
     public void setSrodki(double srodki) {
         this.srodki = srodki;
-    }
-
-    public void setRACHUNEK(UUID RACHUNEK) {
-        this.RACHUNEK = RACHUNEK;
+        this.historia.dodaj("Dodanie środków w wysokości: " + srodki);
     }
 
     public UUID getRACHUNEK() {
+        this.historia.dodaj("Wyświetlenie numeru rachunku");
         return RACHUNEK;
     }
 
-    public double getSrodki(){
+    public double getSrodki() {
         this.historia.dodaj("Wyświetlenie środków na koncie");
         return srodki;
     }
-
-    //Metody rachunku
 
     @Override
     public void zwiekszSrodki(double srodki) {
@@ -54,11 +39,12 @@ public class RachunekBankowy implements RachunekBankowyInterfejs {
     }
 
     @Override
-    public void zmniejszSrodki (double srodki) {
-        if(this.hasEnoughMoney(srodki)){
-            this.srodki-=srodki;
+    public void zmniejszSrodki(double srodki) {
+        if (this.hasEnoughMoney(srodki)) {
+            this.srodki -= srodki;
             this.historia.dodaj("Zmiejszenie środków");
-        }else{
+        } else {
+            this.historia.dodaj("Brak wystarczających środków na koncie");
             Debet debet = new Debet(this);
             debet.zmniejszSrodki(srodki);
         }
@@ -67,17 +53,19 @@ public class RachunekBankowy implements RachunekBankowyInterfejs {
     @Override
     public boolean hasEnoughMoney(double srodki) {
         boolean result;
-        if(this.getSrodki()<srodki){
+        if (this.getSrodki() < srodki) {
+            this.historia.dodaj("Sprawdzenie stanu konta: Niewystarczająco środków");
             result = false;
-        }else{
+        } else {
+            this.historia.dodaj("Sprawdzenie stanu konta: Wystarczająco środków");
             result = true;
         }
         return result;
     }
 
-        @Override
-        public void accept(RaportVisitor raport)
-        {
-            raport.visit(this);
-        }
+    @Override
+    public void accept(RaportVisitor raport) {
+        this.historia.dodaj("Wygenerowanie raportu");
+        raport.visit(this);
+    }
 }
