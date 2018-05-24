@@ -7,22 +7,26 @@ public class Lokata extends RachunekBankowy  {
         super(srodki);
         this.czas = czas;
         this.procent = procent;
-        this.historia = new Historia("Historia lokaty Damiana");
+        this.historia = new Historia("Historia lokaty");
     }
 
     public int getCzas() {
+        this.historia.dodaj("Pobranie czasu trwania lokaty");
         return czas;
     }
 
     public void setCzas(int czas) {
         this.czas = czas;
+        this.historia.dodaj("Ustawienie czasu lokaty");
     }
 
     public double getProcent() {
+        this.historia.dodaj("Pobranie oprocentowania lokaty");
         return procent;
     }
 
     public void setProcent(double procent) {
+        this.historia.dodaj("Ustalenie oprocentowania lokaty");
         this.procent = procent;
     }
 
