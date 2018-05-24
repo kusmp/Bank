@@ -5,11 +5,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RaportTest {
+    IzbaBankowa izba = new IzbaBankowa();
+    Bank bank = new Bank(izba, "Bank Zachodni WBK");
+
     @Test
     void newRaport() {
-        Bank bank = new Bank("WBK");
-        RachunekBankowy rachunek = bank.dodawanieRachunek();
-        RachunekBankowy rachunek2 = bank.dodawanieRachunek();
+        RachunekBankowy rachunek = bank.newRachunek();
+        RachunekBankowy rachunek2 = bank.newRachunek();
         rachunek.setSrodki(1000);
         rachunek2.setSrodki(400);
         List<RachunekBankowy> liczba = bank.getProduktyDoRaportu(500);

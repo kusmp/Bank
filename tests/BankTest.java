@@ -91,6 +91,8 @@ class BankTest {
 
     @Test
     void zaciagniecieKredytu() {
+       Kredyt kredyt = bank.newKredyt(200);
+       assertEquals(200, kredyt.getSrodki());
     }
 
     @Test

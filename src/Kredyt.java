@@ -1,4 +1,4 @@
-public class Kredyt extends RachunekBankowy {
+public class Kredyt extends RachunekBankowy implements OperacjaBankowa {
     private int czas; //podawane w miesiacach
     private double procent; //procent w skali roku
     private int liczbaRat; //podawana w miesiącach
@@ -58,5 +58,10 @@ public class Kredyt extends RachunekBankowy {
     public void accept(RaportVisitor raport)
     {
         raport.visit(this);
+    }
+
+    @Override
+    public void wykonaj() {
+
     }
 }
