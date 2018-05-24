@@ -97,6 +97,10 @@ class BankTest {
 
     @Test
     void splataRatyKredytu() {
+        Kredyt kredyt = bank.newKredyt(200);
+        SplataRatyKredytu splata = new SplataRatyKredytu(kredyt, 100);
+        bank.wykonajOperacje(splata);
+        assertEquals(100, kredyt.getSrodki());
     }
 
     @Test
